@@ -1,20 +1,7 @@
 spring:
-  datasource:
-    url: jdbc:h2:mem:ms_catalogo
-    driverClassName: org.h2.Driver
-    username: sa
-    password:
-  h2:
-    console:
-      enabled: true
-  jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
-    hibernate:
-      ddl-auto: update
-
-springdoc:
-  api-docs:
-    enabled: true
-  swagger-ui:
-    enabled: true
-    path: /doc/swagger-ui.html
+  application:
+    name: ms-catalogo-service
+  profiles:
+    active: development
+  config:
+    import: optional:configserver:http://root:123456@localhost:7070
