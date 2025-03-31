@@ -1,4 +1,4 @@
-spspring:
+spring:
   application:
     name: ms-registry-service
   profiles:
