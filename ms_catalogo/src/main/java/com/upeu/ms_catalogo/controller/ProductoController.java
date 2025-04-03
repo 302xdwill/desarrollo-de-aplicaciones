@@ -2,10 +2,10 @@ package com.upeu.ms_catalogo.controller;
 
 import com.upeu.ms_catalogo.entity.Producto;
 import com.upeu.ms_catalogo.service.ProductoService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,5 +44,21 @@ public class ProductoController {
     public ResponseEntity<Void> eliminarProducto(@PathVariable Integer id) {
         productoService.eliminarProducto(id);
         return ResponseEntity.noContent().build();
+    }
+
+    // Filtrar productos por código
+    @GetMapping("/buscar")
+    public ResponseEntity<List<Producto>> obtenerPorCodigo(@RequestParam String codigo) {
+        List<Producto> productos = productoService.obtenerPorCodigo(codigo);
+        return productos.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(productos);
+    }
+
+    // Filtrar productos por fecha de creación (rango)
+    @GetMapping("/filtrar-por-fecha")
+    public ResponseEntity<List<Producto>> obtenerPorFechaCreacion(
+            @RequestParam("inicio") Date inicio,
+            @RequestParam("fin") Date fin) {
+        List<Producto> productos = productoService.obtenerPorFechaCreacion(inicio, fin);
+        return productos.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(productos);
     }
 }

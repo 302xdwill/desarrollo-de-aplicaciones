@@ -6,11 +6,13 @@ import com.upeu.ms_catalogo.service.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
-@Service  // Marcamos la clase como un componente de servicio de Spring
+@Service
 public class ProductoServiceImpl implements ProductoService {
+
     @Autowired
     private final ProductoRepository productoRepository;
 
@@ -36,5 +38,16 @@ public class ProductoServiceImpl implements ProductoService {
     @Override
     public void eliminarProducto(Integer id) {
         productoRepository.deleteById(id);
+    }
+
+    // Implementación de los métodos de filtro
+    @Override
+    public List<Producto> obtenerPorCodigo(String codigo) {
+        return productoRepository.findByCodigo(codigo);
+    }
+
+    @Override
+    public List<Producto> obtenerPorFechaCreacion(Date inicio, Date fin) {
+        return productoRepository.findByFechaCreacionBetween(inicio, fin);
     }
 }
