@@ -4,28 +4,22 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 
 import java.util.Date;
 
 @Entity
-@Table(name = "producto")  // Esto especifica el nombre de la tabla en la base de datos
 public class Producto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;         // ID autogenerado para cada producto
-
+    private Integer id;
     private String codigo;
     private String nombre;
     private String descripcion;
     private Double precio;
     private Date fechaCreacion;
 
-    // Constructores
-    public Producto() {
-    }
-
+    // Constructor sin el parámetro id, ya que el id se genera automáticamente
     public Producto(String codigo, String nombre, String descripcion, Double precio, Date fechaCreacion) {
         this.codigo = codigo;
         this.nombre = nombre;
@@ -34,7 +28,7 @@ public class Producto {
         this.fechaCreacion = fechaCreacion;
     }
 
-    // Getters y Setters
+    // Getters y Setters (mantén los que ya tienes)
     public Integer getId() {
         return id;
     }

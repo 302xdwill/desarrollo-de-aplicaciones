@@ -18,11 +18,11 @@ public class ProductoSeeder implements CommandLineRunner {
     public void run(String... args) {
         // Verificamos si ya existen datos para no duplicar
         if (productoRepository.count() == 0) {
-            Producto prod1 = new Producto(null, "P001", "Producto A", "Descripción del Producto A", 100.0, new java.util.Date());
-            Producto prod2 = new Producto(null, "P002", "Producto B", "Descripción del Producto B", 150.0, new java.util.Date());
-            Producto prod3 = new Producto(null, "P003", "Producto C", "Descripción del Producto C", 200.0, new java.util.Date());
-            Producto prod4 = new Producto(null, "P004", "Producto D", "Descripción del Producto D", 250.0, new java.util.Date());
-            Producto prod5 = new Producto(null, "P005", "Producto E", "Descripción del Producto E", 300.0, new java.util.Date());
+            Producto prod1 = new Producto("P001", "Producto A", "Descripción del Producto A", 100.0, new java.util.Date());
+            Producto prod2 = new Producto("P002", "Producto B", "Descripción del Producto B", 150.0, new java.util.Date());
+            Producto prod3 = new Producto("P003", "Producto C", "Descripción del Producto C", 200.0, new java.util.Date());
+            Producto prod4 = new Producto("P004", "Producto D", "Descripción del Producto D", 250.0, new java.util.Date());
+            Producto prod5 = new Producto("P005", "Producto E", "Descripción del Producto E", 300.0, new java.util.Date());
 
             productoRepository.save(prod1);
             productoRepository.save(prod2);
