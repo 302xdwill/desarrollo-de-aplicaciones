@@ -10,20 +10,19 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/productos")
+@RequestMapping("/productos")
 public class ProductoController {
 
     private final ProductoService productoService;
 
-    @Autowired
     public ProductoController(ProductoService productoService) {
         this.productoService = productoService;
     }
 
     // Obtener todos los productos
     @GetMapping
-    public List<Producto> obtenerTodos() {
-        return productoService.obtenerTodos();
+    public List<Producto> getAllProductos() {
+        return productoService.getAllProductos();
     }
 
     // Obtener un producto por su ID

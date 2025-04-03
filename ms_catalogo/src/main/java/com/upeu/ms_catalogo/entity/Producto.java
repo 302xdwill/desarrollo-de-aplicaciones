@@ -19,6 +19,10 @@ public class Producto {
     private Double precio;
     private Date fechaCreacion;
 
+    public Producto() {
+    }
+
+
     // Constructor sin el parámetro id, ya que el id se genera automáticamente
     public Producto(String codigo, String nombre, String descripcion, Double precio, Date fechaCreacion) {
         this.codigo = codigo;

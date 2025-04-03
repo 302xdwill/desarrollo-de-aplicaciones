@@ -5,6 +5,8 @@ import com.upeu.ms_catalogo.repository.ProductoRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
+
 @Component
 public class ProductoSeeder implements CommandLineRunner {
 
@@ -16,23 +18,19 @@ public class ProductoSeeder implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        // Verificamos si ya existen datos para no duplicar
+        // Verificamos si ya existen productos
         if (productoRepository.count() == 0) {
-            Producto prod1 = new Producto("P001", "Producto A", "Descripción del Producto A", 100.0, new java.util.Date());
-            Producto prod2 = new Producto("P002", "Producto B", "Descripción del Producto B", 150.0, new java.util.Date());
-            Producto prod3 = new Producto("P003", "Producto C", "Descripción del Producto C", 200.0, new java.util.Date());
-            Producto prod4 = new Producto("P004", "Producto D", "Descripción del Producto D", 250.0, new java.util.Date());
-            Producto prod5 = new Producto("P005", "Producto E", "Descripción del Producto E", 300.0, new java.util.Date());
+            Producto p1 = new Producto("P001", "Producto 1", "Descripción del Producto 1", 99.99, new Date());
+            Producto p2 = new Producto("P002", "Producto 2", "Descripción del Producto 2", 199.99, new Date());
+            Producto p3 = new Producto("P003", "Producto 3", "Descripción del Producto 3", 49.99, new Date());
 
-            productoRepository.save(prod1);
-            productoRepository.save(prod2);
-            productoRepository.save(prod3);
-            productoRepository.save(prod4);
-            productoRepository.save(prod5);
+            productoRepository.save(p1);
+            productoRepository.save(p2);
+            productoRepository.save(p3);
 
-            System.out.println("Datos de productos insertados correctamente.");
+            System.out.println("Productos insertados correctamente.");
         } else {
-            System.out.println("Los productos ya existen, no se insertaron datos.");
+            System.out.println("Los productos ya existen.");
         }
     }
 }

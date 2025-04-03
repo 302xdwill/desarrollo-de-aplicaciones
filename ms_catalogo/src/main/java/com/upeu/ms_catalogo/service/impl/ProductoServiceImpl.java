@@ -11,16 +11,15 @@ import java.util.Optional;
 
 @Service  // Marcamos la clase como un componente de servicio de Spring
 public class ProductoServiceImpl implements ProductoService {
-
+    @Autowired
     private final ProductoRepository productoRepository;
 
-    @Autowired
     public ProductoServiceImpl(ProductoRepository productoRepository) {
         this.productoRepository = productoRepository;
     }
 
     @Override
-    public List<Producto> obtenerTodos() {
+    public List<Producto> getAllProductos() {
         return productoRepository.findAll();
     }
 

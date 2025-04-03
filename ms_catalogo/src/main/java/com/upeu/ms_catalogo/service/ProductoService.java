@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface ProductoService {
 
-    List<Producto> obtenerTodos();
+    List<Producto> getAllProductos();
     Optional<Producto> obtenerPorId(Integer id);
     Producto guardarProducto(Producto producto);
     void eliminarProducto(Integer id);
