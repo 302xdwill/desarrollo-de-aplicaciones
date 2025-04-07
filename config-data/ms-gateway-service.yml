@@ -1,5 +1,5 @@
 server:
-  port: 8085
+  port: 8086
 
 eureka:
   client:
@@ -12,16 +12,10 @@ eureka:
 spring:
   cloud:
     gateway:
-
-
       discovery:
         locator:
           enable: true
       routes:
-        - id: ms-catalogo-service
-          uri: lb://ms-catalogo-service
-          predicates:
-            - Path=/categorias/**, /productos/**
         - id: ms-ventas-service
           uri: lb://ms-ventas-service
           predicates:
