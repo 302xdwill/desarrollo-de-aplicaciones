@@ -2,6 +2,7 @@ package com.upeu.ms_catalogo.controller;
 
 import com.upeu.ms_catalogo.entity.Producto;
 import com.upeu.ms_catalogo.service.ProductoService;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +13,6 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/productos")
 public class ProductoController {
-
     private final ProductoService productoService;
 
     public ProductoController(ProductoService productoService) {
@@ -25,7 +25,7 @@ public class ProductoController {
         return productoService.getAllProductos();
     }
 
-    // Obtener un producto por su ID
+    // Obtener producto por ID
     @GetMapping("/{id}")
     public ResponseEntity<Producto> obtenerPorId(@PathVariable Integer id) {
         Optional<Producto> producto = productoService.obtenerPorId(id);
@@ -47,18 +47,17 @@ public class ProductoController {
     }
 
     // Filtrar productos por código
-    @GetMapping("/buscar")
-    public ResponseEntity<List<Producto>> obtenerPorCodigo(@RequestParam String codigo) {
-        List<Producto> productos = productoService.obtenerPorCodigo(codigo);
-        return productos.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(productos);
+    @GetMapping("/filtrar-por-codigo")
+    public List<Producto> filtrarPorCodigo(@RequestParam String codigo) {
+        return productoService.filtrarPorCodigo(codigo);
     }
 
-    // Filtrar productos por fecha de creación (rango)
+    // Filtrar productos por fecha de creación
     @GetMapping("/filtrar-por-fecha")
-    public ResponseEntity<List<Producto>> obtenerPorFechaCreacion(
-            @RequestParam("inicio") Date inicio,
-            @RequestParam("fin") Date fin) {
-        List<Producto> productos = productoService.obtenerPorFechaCreacion(inicio, fin);
-        return productos.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(productos);
+    public List<Producto> filtrarPorFechaCreacion(
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fechaInicio,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fechaFin) {
+        return productoService.filtrarPorFechaCreacion(fechaInicio, fechaFin);
     }
 }
+

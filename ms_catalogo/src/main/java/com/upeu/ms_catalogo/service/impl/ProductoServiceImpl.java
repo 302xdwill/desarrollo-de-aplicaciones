@@ -6,16 +6,16 @@ import com.upeu.ms_catalogo.service.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class ProductoServiceImpl implements ProductoService {
-
-    @Autowired
     private final ProductoRepository productoRepository;
 
+    @Autowired
     public ProductoServiceImpl(ProductoRepository productoRepository) {
         this.productoRepository = productoRepository;
     }
@@ -40,14 +40,14 @@ public class ProductoServiceImpl implements ProductoService {
         productoRepository.deleteById(id);
     }
 
-    // Implementación de los métodos de filtro
     @Override
-    public List<Producto> obtenerPorCodigo(String codigo) {
+    public List<Producto> filtrarPorCodigo(String codigo) {
         return productoRepository.findByCodigo(codigo);
     }
 
     @Override
-    public List<Producto> obtenerPorFechaCreacion(Date inicio, Date fin) {
-        return productoRepository.findByFechaCreacionBetween(inicio, fin);
+    public List<Producto> filtrarPorFechaCreacion(Date fechaInicio, Date fechaFin) {
+        return productoRepository.findByFechaCreacionBetween(fechaInicio, fechaFin);
     }
 }
+
