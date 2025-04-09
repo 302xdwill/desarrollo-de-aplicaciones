@@ -24,3 +24,11 @@ spring:
           uri: lb://ms-pagos-service
           predicates:
             - Path=/pagos/**
+        - id: ms-clientes-service
+          uri: lb://ms-clientes-service
+          predicates:
+            - Path=/clientes/**
+        - id: ms-catalogo-service
+          uri: lb://ms-catalogo-service
+          predicates:
+            - Path=/categorias/**/productos/**
