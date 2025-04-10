@@ -28,4 +28,8 @@ spring:
           uri: lb://ms-clientes-service
           predicates:
             - Path=/clientes/**
+        - id: ms-pedidos-service
+          uri: lb://ms-pedidos-service
+          predicates:
+            - Path=/pedidos/**
 
