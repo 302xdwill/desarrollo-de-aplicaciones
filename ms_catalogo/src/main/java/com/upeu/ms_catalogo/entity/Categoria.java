@@ -32,10 +32,7 @@ public class Categoria {
         this.id = id;
         this.nombre = nombre;
     }
-
-    public Categoria() {
-
-    }
+    public Categoria() {}
 
     @Override
     public String toString() {
