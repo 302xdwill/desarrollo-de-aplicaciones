@@ -15,5 +15,4 @@ public interface CategoriaService {
     Categoria actualizar(Integer id, Categoria categoria);
 
     void eliminar(Integer id);
-
 }

@@ -32,5 +32,4 @@ public class ProductoController {
     public Producto update(@RequestBody Producto producto) {
         return productoService.update(producto);
     }
-
 }

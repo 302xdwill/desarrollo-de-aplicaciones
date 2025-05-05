@@ -1,5 +1,6 @@
 package com.upeu.ms_catalogo.service.impl;
 
+
 import com.upeu.ms_catalogo.entity.Categoria;
 import com.upeu.ms_catalogo.repository.CategoriaRepository;
 import com.upeu.ms_catalogo.service.CategoriaService;
@@ -12,7 +13,7 @@ import java.util.Optional;
 @Service
 public class CategoriaServiceImpl implements CategoriaService {
     @Autowired
-    private CategoriaRepository categoriaRepository;
+    private com.upeu.ms_catalogo.repository.CategoriaRepository categoriaRepository;
 
     @Override
     public List<Categoria> listar() {
